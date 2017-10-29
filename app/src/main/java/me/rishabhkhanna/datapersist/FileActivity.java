@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -49,20 +50,30 @@ public class FileActivity extends AppCompatActivity {
         try {
             fileInputStream = new FileInputStream(toBeRead);
             inputStreamReader = new InputStreamReader(fileInputStream);
-            char[] data = new char[10];
-            Boolean end = false;
+//            using Buffered Reader
             StringBuilder stringBuilder = new StringBuilder();
-            while(!end) {
-
-                if (inputStreamReader.read(data) == -1) {
-                    end = true;
-                    break;
-                }
-                stringBuilder.append(data);
-
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            String buf = "";
+            while((buf = bufferedReader.readLine()) != null){
+                stringBuilder.append(buf);
             }
-
             return stringBuilder.toString();
+
+//            Own Buffer
+//            char[] data = new char[10];
+//            Boolean end = false;
+//            StringBuilder stringBuilder = new StringBuilder();
+//            while(!end) {
+//
+//                if (inputStreamReader.read(data) == -1) {
+//                    end = true;
+//
+//                }
+//                stringBuilder.append(data);
+//
+//            }
+
+//            return stringBuilder.toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
