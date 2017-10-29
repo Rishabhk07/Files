@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "External storage " + file);
             }
         }
-
-
     }
 
     @Override
