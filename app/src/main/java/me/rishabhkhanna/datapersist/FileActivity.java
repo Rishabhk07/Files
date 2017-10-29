@@ -89,7 +89,7 @@ public class FileActivity extends AppCompatActivity {
         File fileToBeStored = new File(path,fileName);
         FileOutputStream fileOutputStream = null;
         try {
-            fileOutputStream = new FileOutputStream(fileToBeStored);
+            fileOutputStream = new FileOutputStream(fileToBeStored,true);
             fileOutputStream.write(text.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
